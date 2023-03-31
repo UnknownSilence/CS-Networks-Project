@@ -79,3 +79,52 @@ def handle_client(client_socket, client_address):
                                         client_socket.send(ck.encrypt(chat_started_msg.encode()))
                                         target_client_socket = client_sockets[clients.index(target_client_id)]
                                         target_client_socket.send(ck.encrypt(chat_started
+                                                                             
+
+# SNIPPET 2
+###########################################################################################################################################################################################################################################################################################################################
+###########################################################################################################################################################################################################################################################################################################################
+###########################################################################################################################################################################################################################################################################################################################
+
+import random
+
+# Define a dictionary to store the possible responses
+responses = {
+    "greeting": ["Hello!", "Hi there!", "Hey!", "Greetings!"],
+    "goodbye": ["Goodbye!", "Bye bye!", "See you later!", "Farewell!"],
+    "thanks": ["You're welcome!", "No problem!", "My pleasure!"],
+    "age": ["I'm just a computer program, so I don't have an age."],
+    "weather": ["I'm sorry, I don't have access to live weather data."],
+    "default": ["I'm not sure I understand. Can you please be more specific?", 
+                "I'm sorry, I didn't quite catch that. Can you please repeat?", 
+                "I'm not programmed to understand that. Can you try asking something else?"]
+}
+
+# Define a function to generate the response
+def generate_response(input):
+    # Remove leading/trailing white space and convert to lowercase
+    input = input.strip().lower()
+
+    # Check if input contains a greeting keyword
+    if any(word in input for word in ["hello", "hi", "hey", "greetings"]):
+        return random.choice(responses["greeting"])
+
+    # Check if input contains a goodbye keyword
+    elif any(word in input for word in ["goodbye", "bye", "see you", "farewell"]):
+        return random.choice(responses["goodbye"])
+
+    # Check if input contains a thanks keyword
+    elif any(word in input for word in ["thank", "thanks", "appreciate"]):
+        return random.choice(responses["thanks"])
+
+    # Check if input contains an age-related keyword
+    elif any(word in input for word in ["age", "old"]):
+        return random.choice(responses["age"])
+
+    # Check if input contains a weather-related keyword
+    elif any(word in input for word in ["weather", "temperature", "forecast"]):
+        return random.choice(responses["weather"])
+
+    # If no specific keyword is found, use the default response
+    else:
+        return random.choice(responses["default"])

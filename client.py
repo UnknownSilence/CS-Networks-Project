@@ -101,6 +101,3 @@ def chat_session(sock):
                     # End the chat session
                     send_message(sock, "END_REQUEST " + session_id)
                     session_id = ""
-                    break
-                else:
-                    # Send
